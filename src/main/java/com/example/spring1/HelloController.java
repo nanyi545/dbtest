@@ -1,0 +1,34 @@
+package com.example.spring1;
+
+import com.example.spring1.dao.DbService;
+import com.example.spring1.data.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+//@Controller
+@RestController
+public class HelloController {
+    @ResponseBody
+    @RequestMapping("/hello")
+    public String sayHello(){
+        List<Employee> list = dbService.getEmployRepo().findAll();
+        return list.toString();
+    }
+
+    @Autowired
+    private DbService dbService;
+
+    @RequestMapping("/employees")
+    public ResponseEntity<List<Employee>> getEmployees(){
+        List<Employee> list = dbService.getEmployRepo().findAll();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+
+}
