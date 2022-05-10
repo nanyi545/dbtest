@@ -1,5 +1,6 @@
 package com.example.spring1.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -21,9 +22,12 @@ public class Employee {
                 "}\n";
     }
 
+
+    // https://www.baeldung.com/jpa-strategies-when-set-primary-key
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "employeeNumber")
-    private Integer employeeNumber;
+    private int employeeNumber;
 
     @Column(name = "lastName")
     private String lastName;
@@ -33,6 +37,14 @@ public class Employee {
 
     @Column(name = "jobTitle")
     private String jobTitle;
+
+    @Column(name = "extension")
+    private String extension="";
+    @Column(name = "email")
+    private String email="";
+    @Column(name = "officeCode")
+    private String officeCode="6";
+
 
     @Column(name = "reportsTo")
     private Integer reportsTo=-1;

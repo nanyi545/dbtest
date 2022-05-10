@@ -12,23 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-//@Controller
-@RestController
+@Controller
 public class HelloController {
     @ResponseBody
     @RequestMapping("/hello")
     public String sayHello(){
-        List<Employee> list = dbService.getEmployRepo().findAll();
-        return list.toString();
-    }
-
-    @Autowired
-    private DbService dbService;
-
-    @RequestMapping("/employees")
-    public ResponseEntity<List<Employee>> getEmployees(){
-        List<Employee> list = dbService.getEmployRepo().findAll();
-        return new ResponseEntity(list, HttpStatus.OK);
+        return "hello";
     }
 
 }
