@@ -1,4 +1,4 @@
-package com.example.spring1;
+package com.example.spring1.controllers;
 
 import com.example.spring1.dao.DbService;
 import com.example.spring1.data.Employee;
